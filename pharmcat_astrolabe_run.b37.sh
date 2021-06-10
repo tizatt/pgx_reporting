@@ -17,7 +17,8 @@ OUTDIR=$3
 BED=/home/tizatt/pgx/pharmcat_convert/pharmcat.b37.bed
 ASTROLABE_SH=/home/tizatt/pgx/astrolabe_runs/run.sh
 BCFTOOLS_CALL=/home/tizatt/pgx/pharmcat_convert/bcftools_call.sh
-PHARMCAT_JAR=/home/tizatt/pgx/tools/PharmCAT/build/libs/pharmcat-0.7.1-all.jar
+#PHARMCAT_JAR=/home/tizatt/pgx/tools/PharmCAT/build/libs/pharmcat-0.7.1-all.jar
+PHARMCAT_JAR=/home/tizatt/pgx/tools/pharmcat-0.8.0-all.jar
 ASTROLABE_TSV=${OUTDIR}/${OUT}.astrolabe.tsv
 PHARMCAT_VCF37=${OUTDIR}/${OUT}.pharmcat.37.vcf
 PHARMCAT_VCF38=${OUTDIR}/${OUT}.pharmcat.vcf
@@ -42,7 +43,8 @@ ${ASTROLABE_SH} ${BAM} ${PHARMCAT_VCF38} ${ASTROLABE_TSV}
 
 # Run pharmcat
 
-java -jar ${PHARMCAT_JAR} -a ${ASTROLABE_TSV} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF38}
+#java -jar ${PHARMCAT_JAR} -a ${ASTROLABE_TSV} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF38}
+java -jar ${PHARMCAT_JAR} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF38}
 
 
 
