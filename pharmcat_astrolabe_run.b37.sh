@@ -40,11 +40,13 @@ ${BCFTOOLS_CALL} ${BAM} ${BED} ${PHARMCAT_VCF37} ${REF}
 
 
 ${ASTROLABE_SH} ${BAM} ${PHARMCAT_VCF38} ${ASTROLABE_TSV}
+sed -i '/CYP2C19/d' ${ASTROLABE_TSV}
+sed -i '/CYP2C9/d' ${ASTROLABE_TSV}
 
 # Run pharmcat
 
-#java -jar ${PHARMCAT_JAR} -a ${ASTROLABE_TSV} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF38}
-java -jar ${PHARMCAT_JAR} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF38}
+java -jar ${PHARMCAT_JAR} -a ${ASTROLABE_TSV} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF38}
+#java -jar ${PHARMCAT_JAR} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF38}
 
 
 

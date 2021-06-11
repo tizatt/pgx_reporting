@@ -27,8 +27,8 @@ REF=/home/tgenref/homo_sapiens/grch38_hg38/hg38tgen/genome_reference/GRCh38tgen_
 # Run astrolabe.  The output of this (tsv file) goes into pharmcat
 
 ${ASTROLABE_SH} ${BAM} ${VCF} ${ASTROLABE_TSV}
-
-
+sed -i '/CYP2C19/d' ${ASTROLABE_TSV}
+sed -i '/CYP2C9/d' ${ASTROLABE_TSV}
 # convert cram file to a "corrected" pharmcat vcf file
 
 ${BCFTOOLS_CALL} ${BAM} ${BED} ${PHARMCAT_VCF} ${REF}
@@ -36,9 +36,9 @@ ${BCFTOOLS_CALL} ${BAM} ${BED} ${PHARMCAT_VCF} ${REF}
 
 # Run pharmcat
 
-#java -jar ${PHARMCAT_JAR} -a ${ASTROLABE_TSV} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF}
+java -jar ${PHARMCAT_JAR} -a ${ASTROLABE_TSV} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF}
 
-java -jar ${PHARMCAT_JAR} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF}
+#java -jar ${PHARMCAT_JAR} -f ${OUT} -j -o ${OUTDIR}/${OUT} -vcf ${PHARMCAT_VCF}
 
 
 
